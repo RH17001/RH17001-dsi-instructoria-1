@@ -15,24 +15,16 @@ export const builder: CommandBuilder<Options, Options> = (yargs) =>
 export const handler = (argv: Arguments<Options>): void => {
   const { originPath, destinationPath } = argv;
   const fs = require('fs');
+  const path = require('path');
+  const baseName = path.basename(originPath).split('.').shift();
+  const extension = path.extname(originPath);
+  
   fs.readFile(originPath, 'utf8', (err: any, data: any) => {
     if (err) {
       console.error(err);
       return;
     }
-    if (destinationPath !== '') {
-      fs.writeFile(destinationPath, data, (err: any) => {
-        if (err) {
-          console.error(err);
-          return;
-        }
-        process.exit(0);
-      });
-    } else {
-
-      const path = require('path');
-      const baseName = path.basename(originPath).split('.').shift();
-      const extension = path.extname(originPath);
+    if(destinationPath === ''){
       fs.writeFile(`${baseName}-copy${extension}`, data, (err: any) => {
         if (err) {
           console.error(err);
@@ -41,5 +33,28 @@ export const handler = (argv: Arguments<Options>): void => {
         process.exit(0);
       });
     }
+    else {
+      fs.stat(destinationPath, (err: any, stats: any) => {
+        if(!err){
+          fs.writeFile(`${destinationPath}/${baseName}${extension}`, data, (err: any) => {
+            if (err) {
+              console.error(err);
+              return;
+            }
+            process.exit(0);
+          });
+        }
+        else {
+          fs.writeFile(`${destinationPath}`, data, (err: any) => {
+            if (err) {
+              console.error(err);
+              return;
+            }
+            process.exit(0);
+          });
+        }
+      });
+    }
   });
+
 }
