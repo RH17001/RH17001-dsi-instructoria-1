@@ -5,7 +5,7 @@ type Options = {
 }
 
 export const command: string = 'cat2 <filePath>';
-export const desc: string = 'Copiando al cat';
+export const desc: string = 'Leer archivo e imprimir en consola el contenido';
 
 export const builder: CommandBuilder<Options, Options> = (yargs) =>
   yargs.positional('filePath', { type: 'string', demandOption: true });

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handler = exports.builder = exports.desc = exports.command = void 0;
 exports.command = 'echo2 <message>';
-exports.desc = 'Copiando al echo';
+exports.desc = 'Utilidad para mostrar un mensaje';
 const builder = (yargs) => yargs
     .options({
     upper: { type: 'boolean' },

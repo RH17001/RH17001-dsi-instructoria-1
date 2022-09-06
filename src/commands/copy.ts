@@ -6,7 +6,7 @@ type Options = {
 }
 
 export const command: string = 'copy <originPath> [destinationPath]';
-export const desc: string = 'Copiando al cat';
+export const desc: string = 'Copiar archivo';
 
 export const builder: CommandBuilder<Options, Options> = (yargs) =>
   yargs.positional('originPath', { type: 'string', demandOption: true })

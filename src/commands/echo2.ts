@@ -6,7 +6,7 @@ type Options = {
 };
 
 export const command: string = 'echo2 <message>';
-export const desc: string = 'Copiando al echo';
+export const desc: string = 'Utilidad para mostrar un mensaje';
 
 export const builder: CommandBuilder<Options, Options> = (yargs) =>
   yargs

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handler = exports.builder = exports.desc = exports.command = void 0;
 exports.command = 'cat2 <filePath>';
-exports.desc = 'Copiando al cat';
+exports.desc = 'Leer archivo e imprimir en consola el contenido';
 const builder = (yargs) => yargs.positional('filePath', { type: 'string', demandOption: true });
 exports.builder = builder;
 const handler = (argv) => {

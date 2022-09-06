@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handler = exports.builder = exports.desc = exports.command = void 0;
 exports.command = 'copy <originPath> [destinationPath]';
-exports.desc = 'Copiando al cat';
+exports.desc = 'Copiar archivo';
 const builder = (yargs) => yargs.positional('originPath', { type: 'string', demandOption: true })
     .positional('destinationPath', { type: 'string', default: '' });
 exports.builder = builder;
